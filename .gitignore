@@ -4,4 +4,3 @@
 /dist/
 /build/
 /*.egg-info
-jinja-compose.yml
