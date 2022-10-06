@@ -374,7 +374,7 @@ six = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "daf09f96e9e98c3fbfeb19d65f639079ec294e95be26a034f5c96d4930444775"
+content-hash = "3ddc9a4c95039ed8ec81be19f7aa71451439e955ff04ecb241847dcb099d8dc7"
 
 [metadata.files]
 attrs = [
