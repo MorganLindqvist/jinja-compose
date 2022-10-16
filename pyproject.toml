@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jinja-docker-compose"
-version = "1.0.0"
+version = "1.0.1"
 description = "Enables jinja like preposessing of docker-compose files."
 authors = ["Morgan <Morgan@quzed.com>"]
 license = "MIT"

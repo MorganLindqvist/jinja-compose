@@ -62,7 +62,7 @@ services:
 The default names of the files are:
 File|Default name
 :--|--
-Infut fille to preprocess|jinja-docker-compose.yml
+Input file to preprocess|jinja-docker-compose.yml
 Dictionary file| jinja-docker-compose.dic
 Output file | docker-compose.yml
 
