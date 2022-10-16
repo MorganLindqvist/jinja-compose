@@ -19,9 +19,9 @@ PATH=~/.local/bin:$PATH
 ```
 
 ## Using `jinja-docker-compose`
-The `jinja-docker-compose` preprocess the `docker-compose` file to act upon for instance `for loops` and `conditional statements`. The variables used in the preprocessing resides in a dictionnay file in JSON format.
+The `jinja-docker-compose` preprocess the `docker-compose` file to act upon for instance *for loops* and *conditional statements*. The variables used in the preprocessing resides in a dictionnay file in JSON format.
 
-`jinja-docker-compose`can either just do the pre-processing or as well run `docker-compose` on the processed file.
+`jinja-docker-compose` can either just do the pre-processing or as well run `docker-compose` on the processed file.
 
 Example of dictionary file:
 ```json
@@ -62,8 +62,8 @@ services:
 The default names of the files are:
 File|Default name
 :--|--
-Input file to preprocess|jinja-docker-compose.yml
-Dictionary file| jinja-docker-compose.dic
+Input file to preprocess|docker-compose.yml.j2
+Dictionary file| docker-compose.dic
 Output file | docker-compose.yml
 
 The options are:

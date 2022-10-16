@@ -11,15 +11,15 @@ def filehandle_if_exists_else_none(fname):
 
 def open_compose_file(fname):
     if not fname:
-        return filehandle_if_exists_else_none('jinja-docker-compose.yaml') \
-            or filehandle_if_exists_else_none('jinja-docker-compose.yml')
+        return filehandle_if_exists_else_none('docker-compose.yaml.j2') \
+            or filehandle_if_exists_else_none('docker-compose.yml.j2')
     else:
         return filehandle_if_exists_else_none(fname)
 
 
 def open_dictionary_file(fname):
     if not fname:
-        return filehandle_if_exists_else_none('jinja-docker-compose.dic')
+        return filehandle_if_exists_else_none('docker-compose.dic')
     else:
         return filehandle_if_exists_else_none(fname)
 
@@ -30,14 +30,14 @@ def main():
                         type=open_compose_file,
                         default='',
                         help='Specify the yaml file to be transformed,'
-                        ' default is jinja-docker-compose.yaml'
+                        ' default is docker-compose.yaml.j2'
                         ' and if that does not exist'
-                        ' jinja-docker-compose.yml')
+                        ' docker-compose.yml.j2')
     parser.add_argument('-D', '--dictionary', metavar='DICTIONARY_FILE',
                         type=open_dictionary_file,
                         default='',
                         help='Specify the dictionary file to use, default is'
-                        ' jinja-docker-compose.dic.')
+                        ' docker-compose.dic.')
     parser.add_argument('-o', '--output', metavar='OUTPUT_FILE',
                         type=argparse.FileType('w'),
                         default='docker-compose.yml',
