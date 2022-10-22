@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jinja-docker-compose"
-version = "1.0.2"
+version = "1.0.3"
 description = "Enables jinja like preposessing of docker-compose files."
 homepage = "https://github.com/MorganLindqvist/jinja-compose/blob/master/README.md"
 repository = "https://github.com/MorganLindqvist/jinja-compose"
@@ -13,7 +13,7 @@ packages = [{include = "jinja_docker_compose"}]
 jinja-docker-compose = 'jinja_docker_compose.main:main'
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 docker-compose = "^1.29.2"
 Jinja2 = "^3.1.2"
 PyYAML = "^5.4.1"

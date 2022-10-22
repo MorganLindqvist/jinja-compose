@@ -27,7 +27,7 @@ Example of dictionary file:
 ```json
 {
   "LOGGING": "false",
-  "N_GPU": "2"
+  "N_GPU": 2
 }
 ```
 
