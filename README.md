@@ -1,5 +1,5 @@
 # `jinja-docker-compose`
-[`jinja-docker-compose`](https://github.com/MorganLindqvist/jinja-compose) is a simple python script that wraps [`docker-compose`](https://docs.docker.com/compose/) to provide Jinja2 based templating ability to `docker-compose`. It is based on ['jinja-commpose'](https://github.com/sinzlab/jinja-compose).
+[`jinja-docker-compose`](https://github.com/MorganLindqvist/jinja-compose) is a simple python script that wraps [`docker-compose`](https://docs.docker.com/compose/) to provide Jinja2 based templating ability to `docker-compose`. It is based on ['jinja-compose'](https://github.com/sinzlab/jinja-compose).
 
 ## Dependencies
 `jinja-docker-compose` requires following dependencies to be installed on the system:
