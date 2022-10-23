@@ -30,6 +30,10 @@ pre-commit = "^2.20.0"
 name = "cz_conventional_commits"
 version = "1.0.4"
 tag_format = "v$version"
+version_files = [
+    "jinja_docker_compose/__version__.py",
+]
+annotated_tag = "true"
 
 
 [build-system]
