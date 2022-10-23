@@ -10,7 +10,7 @@ readme = "README.md"
 packages = [{include = "jinja_docker_compose"}]
 
 [tool.poetry.scripts]
-jinja-docker-compose = 'jinja_docker_compose.main:main'
+jinja-docker-compose = 'jinja_docker_compose.main:cli'
 
 [tool.poetry.dependencies]
 python = "^3.7"

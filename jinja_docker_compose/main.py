@@ -1,7 +1,8 @@
 import argparse
+import sys
 from sys import exit
 from jinja_docker_compose import jinja_docker_compose as jinja
-from jinja_docker_compose import __version__
+from jinja_docker_compose.__version__ import __version__
 
 
 def filehandle_if_exists_else_none(fname):
@@ -26,8 +27,8 @@ def open_dictionary_file(fname):
         return filehandle_if_exists_else_none(fname)
 
 
-def main():
-    parser = argparse.ArgumentParser(description="jinja-docker-compose version "+__version__.__version__)
+def cli(argv=None):
+    parser = argparse.ArgumentParser(description="jinja-docker-compose version "+__version__)
     parser.add_argument('-f', '--file', metavar='INPUT_FILE',
                         type=open_compose_file,
                         default='',
@@ -52,14 +53,24 @@ def main():
                         help='Uses the SafeLoader when loading the YAML,'
                         ' this removes the possible exploit that the default'
                         ' FullLoader enables')
-    parser.add_argument('-v', '--version', action='store_true',
-                        help='Displays the version and exists.')
+    parser.add_argument('-v', '--version', action='version',
+                        version='jinja-docker-compose version '+__version__,
+                        help='Displays the version and exits.')
 
-    (args, extras) = parser.parse_known_args()
+    # If we were not given the arguments fetch them from the system
+    if not argv:
+        argv = sys.argv[1:]
 
-    if args.version:
-      print('jinja-docker-compose version ' + __version__.__version__)
-      exit(0)
+    # parse the arguments we know and leave the rest, these will be sent to docker-compose
+    (args, extras) = parser.parse_known_args(argv)
+
+    if args.file == None:
+        print('Can´t open input file')
+        exit(1)
+    
+    if args.dictionary == None:
+        print('Can´t open dictionary file')
+        exit(2)
 
     jinja.transform(args)
 
