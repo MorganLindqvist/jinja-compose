@@ -61,14 +61,15 @@ def cli(argv=None):
     if not argv:
         argv = sys.argv[1:]
 
-    # parse the arguments we know and leave the rest, these will be sent to docker-compose
+    # parse the arguments we know and leave the rest,
+    # these will be sent to docker-compose
     (args, extras) = parser.parse_known_args(argv)
 
-    if args.file == None:
+    if args.file is None:
         print('Can´t open input file')
         exit(1)
-    
-    if args.dictionary == None:
+
+    if args.dictionary is None:
         print('Can´t open dictionary file')
         exit(2)
 
