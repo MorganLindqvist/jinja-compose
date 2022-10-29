@@ -13,10 +13,10 @@ def transform(args):
     dic = json.loads(dic_data)
 
     #
-    # Use the more secure SafeLoader if requested, see
+    # Use the more secure SafeLoader if possible, see
     # https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation
     #
-    if args.safeloader:
+    if not args.fullloader:
         loader = yaml.SafeLoader
     else:
         loader = yaml.FullLoader

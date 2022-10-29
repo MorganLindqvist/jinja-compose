@@ -1,7 +1,7 @@
 import argparse
 import sys
-from sys import exit
-from jinja_docker_compose import jinja_docker_compose as jinja
+import jinja_docker_compose.jinja_docker_compose as jinja
+# import jinja_docker_compose.__version__ as __version__
 from jinja_docker_compose.__version__ import __version__
 
 
@@ -46,18 +46,17 @@ def cli(argv=None):
                         default='docker-compose.yml',
                         help='Specify an alternate output compose file'
                         ' (default: docker-compose.yml)')
-    parser.add_argument('-G', '--generate', action='store_true',
-                        help='Generate output compose file and exit,'
-                        ' do not run docker-compose')
-    parser.add_argument('-s', '--safeloader', action='store_true',
-                        help='Uses the SafeLoader when loading the YAML,'
-                        ' this removes the possible exploit that the default'
-                        ' FullLoader enables')
+    parser.add_argument('-r', '--run', action='store_true',
+                        help='Run docker-compose on the generated file')
+    parser.add_argument('--loader', dest='fullloader', action='store_true',
+                        help='Uses the FullLoader when loading the YAML,'
+                        ' this enables the possible exploit that the'
+                        ' FullLoader has.')
     parser.add_argument('-v', '--version', action='version',
                         version='jinja-docker-compose version '+__version__,
-                        help='Displays the version and exits.')
+                        help='Show the version and exits.')
 
-    # If we were not given the arguments fetch them from the system
+    # If we were not given the arguments (in testing) fetch them from the system
     if not argv:
         argv = sys.argv[1:]
 
@@ -67,16 +66,18 @@ def cli(argv=None):
 
     if args.file is None:
         print('Can´t open input file')
-        exit(1)
+        return False
 
     if args.dictionary is None:
         print('Can´t open dictionary file')
-        exit(2)
+        return False
 
     jinja.transform(args)
 
     #
     # Do not run docker-compose if disabled
     #
-    if not args.generate:
+    if args.run:
         jinja.execute_docker_compose(args.output.name, extras)
+
+    return True
