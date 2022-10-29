@@ -72,8 +72,8 @@ Option|Description
 -f|Input file name
 -D|Dictionary file name
 -o|Output file name
--s|Uses the SafeLoader when loading the YAML, this removes the possible exploit that the default FullLoader enables.
--G|Only genereates the output file, do not run `docker-compose`
+--loader|Uses the FullLoader when loading the YAML, this enables the possible exploit that the FullLoader opens up for.
+-r|Apart from genereates the output file, also run `docker-compose`
 
 All options that are valid options to `docker-compose` can also be given to `jinja-docker-compose`and then passed on to `docker-compose`
 
