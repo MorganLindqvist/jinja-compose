@@ -27,7 +27,7 @@ def open_dictionary_file(fname):
         return filehandle_if_exists_else_none(fname)
 
 
-def cli(argv=None):
+def main(argv=None):
     parser = argparse.ArgumentParser(description="jinja-docker-compose version "+__version__)
     parser.add_argument('-f', '--file', metavar='INPUT_FILE',
                         type=open_compose_file,
@@ -66,18 +66,20 @@ def cli(argv=None):
 
     if args.file is None:
         print('Can´t open input file')
-        return False
+        return 101
 
     if args.dictionary is None:
         print('Can´t open dictionary file')
-        return False
+        return 102
 
-    jinja.transform(args)
+    status = jinja.transform(args)
+    if status != 0:
+        return status
 
     #
-    # Do not run docker-compose if disabled
+    # Do only run docker-compose if enabled
     #
     if args.run:
         jinja.execute_docker_compose(args.output.name, extras)
 
-    return True
+    return 0
