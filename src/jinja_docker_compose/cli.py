@@ -1,7 +1,6 @@
 import argparse
 import sys
 import jinja_docker_compose.jinja_docker_compose as jinja
-# import jinja_docker_compose.__version__ as __version__
 from jinja_docker_compose.__version__ import __version__
 
 
