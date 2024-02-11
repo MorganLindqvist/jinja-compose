@@ -54,6 +54,7 @@ def main(argv=None):
     parser.add_argument('-v', '--version', action='version',
                         version='jinja-docker-compose version '+__version__,
                         help='Show the version and exits.')
+    parser.add_argument('command', nargs=argparse.REMAINDER)
 
     # If we were not given the arguments (in testing) fetch them from the system
     if not argv:
@@ -61,24 +62,29 @@ def main(argv=None):
 
     # parse the arguments we know and leave the rest,
     # these will be sent to docker-compose
-    (args, extras) = parser.parse_known_args(argv)
+    try :
+      (args, extras) = parser.parse_known_args(argv)
+    except BaseException as e :
+      print("Arguments parsing error: " + str(e), file=sys.stderr)
+      return 103
 
     if args.file is None:
-        print('Can´t open input file')
+        print("Can't open input file", file=sys.stderr)
         return 101
 
     if args.dictionary is None:
-        print('Can´t open dictionary file')
+        print("Can't open dictionary file", file=sys.stderr)
         return 102
 
     status = jinja.transform(args)
     if status != 0:
+        print("Can't trasform", file = sys.stderr)
         return status
 
     #
     # Do only run docker-compose if enabled
     #
     if args.run:
-        jinja.execute_docker_compose(args.output.name, extras)
+        jinja.execute_docker_compose(args.output.name, extras + args.command)
 
     return 0
